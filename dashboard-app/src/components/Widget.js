@@ -1,4 +1,3 @@
-// src/components/Widget.js
 import React from 'react';
 
 const Widget = ({ data, onRemove }) => {

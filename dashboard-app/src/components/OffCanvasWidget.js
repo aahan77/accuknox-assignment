@@ -17,7 +17,7 @@ const OffCanvasWidget = ({ onSave, onClose }) => {
   };
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex">
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-end">
       <div className="bg-white p-6 w-96 h-full shadow-lg">
         <h2 className="text-xl font-semibold mb-4">Add New Widget</h2>
         <div className="mb-4">
