@@ -71,86 +71,69 @@ const Dashboard = () => {
           />
         </div>
         <div className="p-6 m-5 shadow-md rounded-md bg-[#F0F5FA]">
-        <div className="flex items-center justify-between   mt-2">
-          <div className="text-lg font-semibold">CNAPP Dashboard</div>
-          <div className="flex items-center space-x-4 relative">
-            <button className="bg-white text-gray-600 px-4 py-2 rounded-md shadow-sm border border-gray-300">
-              Add Widget +
-            </button>
-            <button
-              className="bg-white text-gray-600 px-4 py-2 rounded-md shadow-sm border border-gray-300"
-              onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-            >
-              Last 2 days ▼
-            </button>
-
-            {/* Dropdown Menu */}
-            {isDropdownOpen && (
-              <div className="absolute right-4 top-12 w-48 bg-white border border-gray-300 rounded-md shadow-lg z-50">
-                <ul>
-                  <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
-                    Last 1 day
-                  </li>
-                  <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
-                    Last 2 days
-                  </li>
-                  <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
-                    Last 7 days
-                  </li>
-                  <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
-                    Last 30 days
-                  </li>
-                </ul>
-              </div>
-            )}
-
-            <button className="bg-white text-gray-600 px-4 py-2 rounded-md shadow-sm border border-gray-300">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
+          <div className="flex items-center justify-between   mt-2">
+            <div className="text-lg font-semibold">CNAPP Dashboard</div>
+            <div className="flex items-center space-x-4 relative">
+              <button className="bg-white text-gray-600 px-4 py-2 rounded-md shadow-sm border border-gray-300">
+                Add Widget +
+              </button>
+              <button
+                className="bg-white text-gray-600 px-4 py-2 rounded-md shadow-sm border border-gray-300"
+                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M6 12h12M6 12l6 6m0-6l-6-6"
-                />
-              </svg>
-            </button>
-          </div>
-        </div>
+                Last 2 days ▼
+              </button>
 
-        <div className="">
-          {filteredCategories.map((category) => (
-            <div key={category.name} className="mb-8 mt-8">
-              <h2 className="text-xl font-semibold mb-4">{category.name}</h2>
-              <div className="grid grid-cols-2 gap-6">
-                {category.widgets.length > 0 ? (
-                  category.widgets.map((widget) => (
-                    <Widget
-                      key={widget.id}
-                      data={widget}
-                      onRemove={() =>
-                        handleRemoveWidget(category.name, widget.id)
-                      }
-                    />
-                  ))
-                ) : (
-                  <p>No widgets match your search criteria.</p>
-                )}
-                <button
-                  onClick={() => handleAddWidget(category.name)}
-                  className="border-dashed border-2 p-4 rounded-lg text-center"
-                >
-                  + Add Widget
-                </button>
-              </div>
+              {/* Dropdown Menu */}
+              {isDropdownOpen && (
+                <div className="absolute right-4 top-12 w-48 bg-white border border-gray-300 rounded-md shadow-lg z-50">
+                  <ul>
+                    <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                      Last 1 day
+                    </li>
+                    <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                      Last 2 days
+                    </li>
+                    <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                      Last 7 days
+                    </li>
+                    <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                      Last 30 days
+                    </li>
+                  </ul>
+                </div>
+              )}
             </div>
-          ))}
-        </div>
+          </div>
+
+          <div className="">
+            {filteredCategories.map((category) => (
+              <div key={category.name} className="mb-8 mt-8">
+                <h2 className="text-xl font-semibold mb-4">{category.name}</h2>
+                <div className="grid grid-cols-2 gap-6">
+                  {category.widgets.length > 0 ? (
+                    category.widgets.map((widget) => (
+                      <Widget
+                        key={widget.id}
+                        data={widget}
+                        onRemove={() =>
+                          handleRemoveWidget(category.name, widget.id)
+                        }
+                      />
+                    ))
+                  ) : (
+                    <p>No widgets match your search criteria.</p>
+                  )}
+                  <button
+                    onClick={() => handleAddWidget(category.name)}
+                    className="border-dashed border-2 p-4 rounded-lg text-center"
+                  >
+                    + Add Widget
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
         {isOffCanvasOpen && (
           <OffCanvasWidget
